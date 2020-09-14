@@ -28,8 +28,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import lineageos.app.Profile;
-import lineageos.app.ProfileManager;
+import com.android.internal.custom.app.Profile;
+import com.android.internal.custom.app.ProfileManager;
 
 import com.android.internal.app.AlertActivity;
 import com.android.internal.app.AlertController;

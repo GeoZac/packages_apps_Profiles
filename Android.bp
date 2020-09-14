@@ -19,8 +19,6 @@ android_app {
 
     srcs: ["src/**/*.java"],
 
-    static_libs: ["org.lineageos.platform.internal"],
-
     resource_dirs: ["res"],
 
     certificate: "platform",
