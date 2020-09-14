@@ -33,12 +33,12 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.UserHandle;
+import android.provider.Settings;
 import android.service.trust.TrustAgentService;
 import android.util.ArraySet;
 import android.util.Log;
-import lineageos.app.Profile;
-import lineageos.app.ProfileManager;
-import lineageos.providers.LineageSettings;
+import com.android.internal.custom.app.Profile;
+import com.android.internal.custom.app.ProfileManager;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
@@ -98,7 +98,7 @@ public class ProfilesTrustAgent extends TrustAgentService {
             setManagingTrust(true);
             mObserver = new SystemProfilesSettingsObserver(mHandler);
             getContentResolver().registerContentObserver(
-                    LineageSettings.System.getUriFor(LineageSettings.System.SYSTEM_PROFILES_ENABLED),
+                    Settings.System.getUriFor(Settings.System.SYSTEM_PROFILES_ENABLED),
                     false, mObserver);
             mHandler.sendEmptyMessage(MSG_ON_AGENT_CREATED);
         }
@@ -316,7 +316,7 @@ public class ProfilesTrustAgent extends TrustAgentService {
 
         @Override
         public void onChange(boolean selfChange, Uri uri) {
-            if (LineageSettings.System.getUriFor(LineageSettings.System.SYSTEM_PROFILES_ENABLED)
+            if (Settings.System.getUriFor(Settings.System.SYSTEM_PROFILES_ENABLED)
                     .compareTo(uri) == 0) {
                 mHandler.sendEmptyMessage(MSG_UPDATE_STATE);
             }
